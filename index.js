@@ -1,11 +1,11 @@
 function makeWikiUrl(article) {
     return "https://wikipedia.org/wiki/" + encodeURIComponent(article);
-};
+}
 
 function createArticles(pages) {
     for (var i = 0; i < pages.length; i++) {
         $('.pages ul').append(
-            '<a class="item" target="_blank" href='+ makeWikiUrl(pages[i].title) +'>\
+            '<a class="item" target="_blank" href=' + makeWikiUrl(pages[i].title) + '>\
                 <li>\
                     <h1>' + pages[i].title + '</h1>'
                     + pages[i].snippet +
@@ -20,7 +20,7 @@ function getUrl(inputContent) {
 
 function clear() {
     $('.item').remove();
-};
+}
 
 function error() {
     return $('.pages ul').append('<div class="item">Please enter your query</div>')
@@ -29,7 +29,7 @@ function error() {
 function getPagesByTitles(query) {
     clear();
 
-    if(!query) {
+    if (!query) {
         error();
         return;
     }
