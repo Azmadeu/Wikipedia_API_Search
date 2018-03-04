@@ -13,17 +13,14 @@
 //     });
 // }
 
-function getLinksByTitles() {
-    var links = [];
-    for (var i = 0; i < data.query.search.length;i++){
-        links.push('https//wikipedia.org/wiki/'+ pageTitles[i]);
-    }
-}
+function makeWikiUrl(article) {
+    return "https://wikipedia.org/wiki/" + encodeURIComponent(article);
+};
 
 function createArticles(pages) {
     for (var i = 0; i < pages.length; i++) {
         $('.pages ul').append(
-            '<a>\
+            '<a target="_blank" href='+ makeWikiUrl(pages[i].title) +'>\
                 <li>\
                     <h1>' + pages[i].title + '</h1>'
                     + pages[i].snippet +
