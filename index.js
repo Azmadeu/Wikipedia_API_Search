@@ -20,7 +20,7 @@ function makeWikiUrl(article) {
 function createArticles(pages) {
     for (var i = 0; i < pages.length; i++) {
         $('.pages ul').append(
-            '<a target="_blank" href='+ makeWikiUrl(pages[i].title) +'>\
+            '<a class="item" target="_blank" href='+ makeWikiUrl(pages[i].title) +'>\
                 <li>\
                     <h1>' + pages[i].title + '</h1>'
                     + pages[i].snippet +
@@ -32,6 +32,10 @@ function createArticles(pages) {
 function getUrl(inputContent) {
     return 'https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&titles=&srsearch=' + inputContent + '&srwhat=text';
 }
+
+function clear() {
+    $('.item').remove();
+};
 
 function getPagesByTitles(query) {
     var pages = [];
@@ -47,6 +51,7 @@ function getPagesByTitles(query) {
                     snippet: data.query.search[i].snippet
                 });
             }
+            clear();
             createArticles(pages);
         }
     })
@@ -54,9 +59,10 @@ function getPagesByTitles(query) {
 
 
 window.onload = function () {
-    $('.input').keypress(function (e) {
+    var input = $('.input');
+    input.keypress(function (e) {
         if (e.which === 13) {
-            getPagesByTitles('Programming');
+            getPagesByTitles(input.val());
             return false;
         }
     });
