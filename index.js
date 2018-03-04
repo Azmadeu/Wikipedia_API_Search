@@ -1,18 +1,3 @@
-// https://en.wikipedia.org/w/api.php?action=query&list=allcategories&acprop=size%20&acprefix=programming&format=json
-// https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&titles=&srsearch=query&srwhat=text
-
-// function getArticles() {
-//     $.ajax({
-//         url: 'https://en.wikipedia.org/w/api.php?action=query&list=random&format=json&rnnamespace=0&rnlimit=10',
-//         dataType: 'jsonp',
-//         crossDomain: true,
-//         success: function (data) {
-//             //  getUrl()
-//             getPagesByTitles();
-//         }
-//     });
-// }
-
 function makeWikiUrl(article) {
     return "https://wikipedia.org/wiki/" + encodeURIComponent(article);
 };
@@ -37,11 +22,21 @@ function clear() {
     $('.item').remove();
 };
 
+function error() {
+    return $('.pages ul').append('<div class="item">Please enter your query</div>')
+}
+
 function getPagesByTitles(query) {
+    clear();
+
+    if(!query) {
+        error();
+        return;
+    }
+
     var pages = [];
     $.ajax({
         url: getUrl(query),
-        // url: 'https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&titles=&srsearch=query&srwhat=text',
         dataType: 'jsonp',
         crossDomain: true,
         success: function (data) {
@@ -51,12 +46,10 @@ function getPagesByTitles(query) {
                     snippet: data.query.search[i].snippet
                 });
             }
-            clear();
             createArticles(pages);
         }
     })
 }
-
 
 window.onload = function () {
     var input = $('.input');
