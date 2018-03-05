@@ -8,9 +8,9 @@ function createArticles(pages) {
             '<a class="item" target="_blank" href=' + makeWikiUrl(pages[i].title) + '>\
                 <li>\
                     <h1>' + pages[i].title + '</h1>'
-                    + pages[i].snippet +
-                '</li>\
-            </a>');
+            + pages[i].snippet +
+            '</li>\
+        </a>');
     }
 }
 
@@ -23,7 +23,11 @@ function clear() {
 }
 
 function error() {
-    return $('.pages ul').append('<div class="item">Please enter your query</div>')
+    return $('.pages ul').append('<div class="item error">\
+                                          <p>\
+                                            Please enter your query\
+                                          </p>\
+                                  </div>')
 }
 
 function getPagesByTitles(query) {
