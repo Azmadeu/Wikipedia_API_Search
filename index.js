@@ -32,8 +32,10 @@ function error() {
 
 function getPagesByTitles(query) {
     clear();
-
     if (!query) {
+        error();
+
+    }else if(query === " " || query === "~"){
         error();
         return;
     }
