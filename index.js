@@ -27,7 +27,7 @@ function clearInput() {
 }
 
 function error() {
-    $('.pages ul').append('<div class="item error">\
+    return $('.pages ul').append('<div class="item error">\
                                           <p>\
                                             Please enter your query\
                                           </p>\
@@ -63,7 +63,6 @@ function getPagesByTitles(query) {
 
 function moveInputToTop() {
     $('.center-of-desktop').addClass("wrapper");
-
 }
 
 window.onload = function () {

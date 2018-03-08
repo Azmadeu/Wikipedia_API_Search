@@ -41,7 +41,7 @@ body {
 .center-of-desktop {
     overflow: hidden;
     position: absolute;
-    width: 100%;
+    width: 99%;
     height: 100%;
     display: flex;
     justify-content: center; /*centers items on the line (the x-axis by default)*/
@@ -72,6 +72,7 @@ ul li {
 }
 
 .pages {
+    width:99%;
     position: absolute;
 }
 
@@ -102,17 +103,17 @@ ul li {
     border-left-color: orange;
 }
 
-.error p {
+.error {
     opacity: 0.8;
     display: flex;
     justify-content: center;
     font-size: 18px;
     background-color: #011721;
     padding: 15px 55px;
-    margin-left:410px;
     border-radius: 3px;
     font-weight: 600;
     color: #e2886c;
+    margin-right: 90px;
 }
 
 .wrapper {
