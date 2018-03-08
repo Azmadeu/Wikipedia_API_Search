@@ -22,8 +22,12 @@ function clear() {
     $('.item').remove();
 }
 
+function clearInput() {
+    $('.item-input').remove();
+}
+
 function error() {
-    return $('.pages ul').append('<div class="item error">\
+    $('.pages ul').append('<div class="item error">\
                                           <p>\
                                             Please enter your query\
                                           </p>\
@@ -35,7 +39,7 @@ function getPagesByTitles(query) {
     if (!query) {
         error();
 
-    }else if(query === " " || query === "~"){
+    } else if (query === " " || query === "~") {
         error();
         return;
     }
@@ -57,10 +61,16 @@ function getPagesByTitles(query) {
     })
 }
 
+function moveInputToTop() {
+    $('.center-of-desktop').addClass("wrapper");
+
+}
+
 window.onload = function () {
     var input = $('.input');
     input.keypress(function (e) {
         if (e.which === 13) {
+            moveInputToTop();
             getPagesByTitles(input.val());
             return false;
         }
